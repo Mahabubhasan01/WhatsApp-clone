@@ -1,0 +1,121 @@
+.parent-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-btn {
+  height: 34px;
+  width: 144px;
+  border: 1px solid transparent;
+  background-image: linear-gradient(45deg, #d4fff8, #ffdeff, #ffe6e6),
+    linear-gradient(45deg, #007a65, #7f0e7f, #ff8983);
+  background-clip: padding-box, border-box;
+  background-origin: border-box, border-box;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: Helvetica, sans-serif;
+  transition: opacity 0.1s cubic-bezier(0.25, 0.1, 0.25, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px;
+}
+
+.modal-btn:hover {
+  opacity: 0.7;
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 0.1);
+}
+
+.modal__bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.modal-state {
+  display: none;
+}
+
+.modal-state:checked + .modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-state:checked + .modal .modal__inner {
+  top: 0;
+}
+
+.modal__inner {
+  transition: top 0.3s ease;
+  position: absolute;
+  top: -20%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  max-width: 600px;
+  margin: auto;
+  overflow: auto;
+  background: #fff;
+  border-radius: 5px;
+  padding: 1em 2em;
+  height: 65%;
+  min-height: 160px;
+}
+
+.modal__close {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 1.1em;
+  height: 1.1em;
+  cursor: pointer;
+}
+
+.modal__close:after,
+.modal__close:before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 1.5em;
+  background: #ccc;
+  display: block;
+  transform: rotate(45deg);
+  left: 50%;
+  margin: -3px 0 0 -1px;
+  top: 0;
+}
+
+.modal__close:hover:after,
+.modal__close:hover:before {
+  background: #aaa;
+}
+
+.modal__close:before {
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .modal__inner {
+    width: 90%;
+    height: 70%;
+    box-sizing: border-box;
+    padding: 1em 1.5em;
+  }
+}

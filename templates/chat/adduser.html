@@ -1,0 +1,25 @@
+{% load static %} 
+<link rel="stylesheet" href="{% static 'chat/loginform.css' %}">
+<label class="modal-btn" for="modal-2">Add User</label>
+<input class="modal-state" id="modal-2" type="checkbox" />
+<div class="modal">
+  <label class="modal__bg" for="modal-2"></label>
+  <div class="modal__inner">
+    <label class="modal__close" for="modal-2"></label>
+    <p>
+      <form>
+        <div class="segment">
+          <h2>Add new user</h2>
+        </div>
+        
+        <label>
+          <input type="text" placeholder="Email Address"/>
+        </label>
+        <label>
+          <input type="password" placeholder="Password"/>
+        </label>
+        <button class="red" type="button"><i class="icon ion-md-lock"></i>Save</button>
+      </form>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'chat/navbar.css' %}" />
+<div>
+  <ul>
+    <li
+      class="tab-item active"
+      target-wrapper="first-dynamic-table"
+      target-tab="home"
+    >
+      Home
+    </li>
+    <li
+      class="tab-item"
+      target-wrapper="first-dynamic-table"
+      target-tab="about"
+    >
+      Users
+    </li>
+    <li class="tab-item" target-wrapper="first-dynamic-table" target-tab="faqs">
+      FAQS
+    </li>
+    <li
+      class="tab-item"
+      target-wrapper="first-dynamic-table"
+      target-tab="contact"
+    >
+      Contact
+    </li>
+  </ul>
+  <div id="first-dynamic-table">
+    <div class="tab-content active" id="home">
+      {% include 'chat/loginform.html' %}
+    </div>
+    <div class="tab-content" id="about">
+      {% include 'chat/userdata.html' %}
+    </div>
+    <div class="tab-content" id="faqs">
+      <h2>faqs</h2>
+    </div>
+    <div class="tab-content" id="contact">
+      <h2>Contact</h2>
+    </div>
+  </div>
+</div>
+<script>
+  let tabSwitchers = document.querySelectorAll("[target-wrapper]");
+  tabSwitchers.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let currentWrapperId = item.getAttribute("target-wrapper");
+      let currentWrapperTargetId = item.getAttribute("target-tab");
+
+      let currentWrapper = document.querySelector(`#${currentWrapperId}`);
+      let currentWrappersTarget = document.querySelector(
+        `#${currentWrapperTargetId}`
+      );
+
+      let allCurrentTabItem = document.querySelectorAll(
+        `[target-wrapper='${currentWrapperId}']`
+      );
+      let allCurrentWrappersTarget = document.querySelectorAll(
+        `#${currentWrapperId} .tab-content`
+      );
+
+      if (currentWrappersTarget) {
+        if (!currentWrappersTarget.classList.contains("active")) {
+          allCurrentWrappersTarget.forEach((tabItem) => {
+            tabItem.classList.remove("active");
+          });
+          allCurrentTabItem.forEach((item) => {
+            item.classList.remove("active");
+          });
+          item.classList.add("active");
+          currentWrappersTarget.classList.add("active");
+        }
+      }
+    });
+  });
+</script>
